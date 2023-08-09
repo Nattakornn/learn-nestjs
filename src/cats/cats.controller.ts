@@ -15,17 +15,17 @@ export class CatsController {
 
   @Post()
   async create(@Body() createCatDto: CreateCatDto) {
-    return this.catsService.create(createCatDto);
+    return await this.catsService.create(createCatDto);
   }
 
   @Get()
   async findAll(): Promise<Cat[]> {
-    return this.catsService.findAll();
+    return await this.catsService.findAll();
   }
 
   @Delete('/:id')
-  deleteCatsById(@Param("id") id:string){
-    return this.catsService.removeCatsById(id)
+  async deleteCatsById(@Param("id") id:string){
+    return await this.catsService.removeCatsById(id);
   }
 
 }
